@@ -27,8 +27,16 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
-      // cube
+      // resize with browser
+      window.addEventListener("resize", function () {
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      });
 
+      // cube
       var geometry = new THREE.BoxGeometry(2, 2, 2);
       var material = new THREE.MeshBasicMaterial({ color: 0xcbb9d3, wireframe: true });
       var cube = new THREE.Mesh(geometry, material);
