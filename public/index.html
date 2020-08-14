@@ -4,13 +4,21 @@
     <meta charset="utf-8" />
     <title>Stackathon</title>
     <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="./style.css" />
-    <script src="public/bundle.js"></script>
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+    <script src="bundle.js"></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <script src="./three.js"></script>
-    <h1 id="title">Stackathon</h1>
     <script>
       //set up scene here
       var scene = new THREE.Scene();
@@ -20,18 +28,23 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
-      // some geometry stuff
-      var geometry = new THREE.BoxGeometry();
-      var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      // cube
+      //var geometry = new THREE.OctahedronBufferGeometry(1, 0);
+      var geometry = new THREE.BoxGeometry(2, 2, 2);
+      var material = new THREE.MeshBasicMaterial({ color: 0xcbb9d3, wireframe: true });
       var cube = new THREE.Mesh(geometry, material);
       scene.add(cube);
 
+      // var octahedron = new THREE.OctahedronBufferGeometry(1, 0);
+      //var octMaterial = new THREE.OctahedronBufferGeometry({color:})
+
       camera.position.z = 5;
 
+      // rotation
       var animate = function () {
         requestAnimationFrame(animate);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
+        cube.rotation.x += 0.05;
+        cube.rotation.y += 0.05;
         renderer.render(scene, camera);
       };
       animate();
