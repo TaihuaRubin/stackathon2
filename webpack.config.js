@@ -8,6 +8,10 @@ module.exports = {
     path: __dirname,
     filename: "./src/bundle.js",
   },
+  node: {
+    fs: "empty",
+    net: "empty",
+  },
   mode: "development",
   context: __dirname,
   devtool: "source-map",
