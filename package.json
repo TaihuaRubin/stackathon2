@@ -5,6 +5,7 @@
   "main": "server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf build && webpack",
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
     "start": "node server/app.js",
@@ -15,14 +16,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aframe": "^1.0.4",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "three": "^0.119.1"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^6.0.3",
     "nodemon": "^2.0.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
