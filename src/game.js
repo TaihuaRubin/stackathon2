@@ -23,6 +23,9 @@ class Game {
     this.camera.position.z = 3; //camera 3 away from center pivot in z
 
     this.animate(); // call animation function to animate the cube
+    // get button
+    var animateButton = document.getElementById("animateButton");
+    animateButton.addEventListener("click", (event) => console.log("button Clicked!"));
   }
 
   animate() {
