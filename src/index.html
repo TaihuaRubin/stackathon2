@@ -14,12 +14,13 @@
   </head>
   <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
-    <!-- <script src="../libs/three.min.js"></script> -->
+    <script src="../libs/three.min.js"></script>
+    <script src="../libs/OrbitControls.js"></script>
     <script src="/bundle.js"></script>
     <script src="game.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const game = new Game();
+        const game = new Game(THREE.OrbitControls);
         window.game = game; //To debug in the browser console
         console.log("DOM loaded!");
       });
