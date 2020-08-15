@@ -7,6 +7,7 @@ const port = 1337;
 
 // static files
 app.use(express.static(path.join(__dirname, "./src")));
+app.use(express.static(path.join(__dirname, "./libs")));
 
 app.get("*", function (req, res, next) {
   res.sendFile(path.join(__dirname, "./src/index.html"));
