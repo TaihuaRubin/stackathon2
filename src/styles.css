@@ -24,3 +24,21 @@ canvas {
   /* top: 90%; */
   bottom: 15%;
 }
+
+#spacial {
+  font-family: Monospace;
+  background: #89ddf3;
+  border: 0;
+  opacity: 0.8;
+  color: #582069;
+  padding: 10px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  position: absolute;
+  display: block;
+  z-index: 0;
+  left: 20%;
+  /* top: 90%; */
+  bottom: 15%;
+}
