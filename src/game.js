@@ -22,25 +22,52 @@ class Game {
 
     this.camera.position.z = 3; //camera 3 away from center pivot in z
 
-    this.animate(); // call animation function to animate the cube
+    this.renderer.render(this.scene, this.camera);
+
+    // animation stuff here
+    this.animationStaus = false;
     // get button
     var animateButton = document.getElementById("animateButton");
-    animateButton.addEventListener("click", (event) => console.log("button Clicked!"));
+    animateButton.addEventListener("click", () => {
+      console.log("button Clicked!");
+      // call animation function to animate the cube
+      this.animationStatus = !this.animationStatus;
+      this.animateOn();
+    });
   }
 
-  animate() {
+  animationHandler() {
+    console.log(this.animationStatus);
+    if (!this.animationStatus) {
+      this.animateOn();
+    } else {
+    }
+  }
+
+  animateOn() {
     const game = this;
+    if (!this.animationStatus) return;
+    //window method, updates 60 times a second
     requestAnimationFrame(function () {
-      //window method, updates 60 times a second
-      game.animate();
+      game.animateOn();
     });
 
+    console.log("on");
     // how much rotation to update every time
     this.cube.rotation.x += 0.05;
     this.cube.rotation.y += 0.01;
 
     this.renderer.render(this.scene, this.camera); // make WebGl render the scene and camera
   }
+
+  // animateOff(animId) {
+  //   const game = this;
+
+  //   cancelAnimationFrame(animId);
+
+  //   console.log("off");
+  //   this.renderer.render(this.scene, this.camera);
+  // }
 }
 
 //// add orbit controls
