@@ -15,7 +15,16 @@ class Game {
         this.camera.updateProjectionMatrix();
       }
     });
-    // set position for button?
+    this.loader = new THREE.CubeTextureLoader();
+    this.texture = this.loader.load([
+      "assets/skybox/dark-s_px.jpg",
+      "assets/skybox/dark-s_nx.jpg",
+      "assets/skybox/dark-s_py.jpg",
+      "assets/skybox/dark-s_ny.jpg",
+      "assets/skybox/dark-s_pz.jpg",
+      "assets/skybox/dark-s_nz.jpg",
+    ]);
+    this.scene.background = this.texture;
 
     const geometry = new THREE.BoxGeometry(1, 1, 1); // cube
     const light = new THREE.DirectionalLight(0xffffff); // white light
