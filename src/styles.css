@@ -7,6 +7,15 @@ canvas {
 }
 
 #animateButton {
+  font-family: Monospace;
+  background: #89ddf3;
+  border: 0;
+  opacity: 0.5;
+  color: #000000;
+  padding: 16px 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+
   position: absolute;
   display: block;
   z-index: 75;
