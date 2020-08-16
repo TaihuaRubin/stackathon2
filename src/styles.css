@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  height: 100%;
 }
 canvas {
   width: 100%;
@@ -10,16 +11,16 @@ canvas {
   font-family: Monospace;
   background: #89ddf3;
   border: 0;
-  opacity: 0.5;
-  color: #000000;
-  padding: 16px 20px;
+  opacity: 0.8;
+  color: #582069;
+  padding: 10px 10px;
   text-transform: uppercase;
   cursor: pointer;
 
   position: absolute;
   display: block;
-  z-index: 75;
+  z-index: 0;
   left: 47%;
   /* top: 90%; */
-  bottom: 20%;
+  bottom: 15%;
 }

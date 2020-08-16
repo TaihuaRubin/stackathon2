@@ -8,11 +8,14 @@
     <button id="animateButton">Animate</button>
 
     <div id="library">
+      <script src="jquery.js"></script>
+      <script>
+        jQuery.noConflict();
+      </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
-      <script src="../libs/three.min.js"></script>
-      <script src="../libs/OrbitControls.js"></script>
       <script src="/bundle.js"></script>
       <script src="game.js"></script>
+      <audio id="audio" src="assets/1.mp3"></audio>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {

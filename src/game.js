@@ -7,6 +7,16 @@ class Game {
     document.body.appendChild(this.renderer.domElement); // append the renderer to the dom
     this.controls = THREE.OrbitControls(this.camera, this.renderer.domElement);
 
+    // resize with browser
+    window.addEventListener("resize", () => {
+      if (this.renderer !== "undefined") {
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.camera.aspect = window.innerWidth / window.innerHeight;
+        this.camera.updateProjectionMatrix();
+      }
+    });
+    // set position for button?
+
     const geometry = new THREE.BoxGeometry(1, 1, 1); // cube
     const light = new THREE.DirectionalLight(0xffffff); // white light
     light.position.set(0, 20, 10); // light position x, y, z
@@ -28,11 +38,13 @@ class Game {
     this.animationStaus = false;
     // get button
     var animateButton = document.getElementById("animateButton");
+
     animateButton.addEventListener("click", () => {
       console.log("button Clicked!");
       // call animation function to animate the cube
       this.animationStatus = !this.animationStatus;
       this.animateOn();
+      this.soundLoad();
     });
   }
 
@@ -54,26 +66,24 @@ class Game {
 
     console.log("on");
     // how much rotation to update every time
-    this.cube.rotation.x += 0.05;
+    this.cube.rotation.x += 0.01;
     this.cube.rotation.y += 0.01;
 
     this.renderer.render(this.scene, this.camera); // make WebGl render the scene and camera
   }
 
-  // animateOff(animId) {
-  //   const game = this;
-
-  //   cancelAnimationFrame(animId);
-
-  //   console.log("off");
-  //   this.renderer.render(this.scene, this.camera);
-  // }
+  soundLoad() {
+    const sound = document.getElementById("audio");
+    if (!this.animationStatus) sound.pause();
+    else {
+      sound.play();
+    }
+  }
 }
 
 //// add orbit controls
 THREE.OrbitControls = function (object, domElement) {
   this.object = object;
-
   this.domElement = domElement !== undefined ? domElement : document;
 
   // Set to false to disable this control
