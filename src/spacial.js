@@ -23,10 +23,10 @@
 //   };
 // });
 
-const spacialButton = document.getElementById("spacial");
-spacialButton.addEventListener("click", () => {
-  console.log("spacial!");
-  console.log(THREE);
-});
+// const spacialButton = document.getElementById("spacial");
+// spacialButton.addEventListener("click", () => {
+//   console.log("spacial!");
+//   console.log(THREE);
+// });
 
 // audio stuff

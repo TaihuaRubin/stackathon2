@@ -55,6 +55,12 @@ class Game {
       this.animateOn();
       this.soundLoad();
     });
+
+    const spacialButton = document.getElementById("spacial");
+    spacialButton.addEventListener("click", () => {
+      console.log("spacial!");
+      this.webAud();
+    });
   }
 
   animationHandler() {
@@ -87,6 +93,24 @@ class Game {
     else {
       sound.play();
     }
+  }
+
+  webAud() {
+    this.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+    this.audioElment = document.querySelector("audio");
+
+    this.audioCtx = new AudioContext();
+    this.track = this.audioCtx.createMediaElementSource(this.audioElement);
+
+    // create gain
+    this.gainNode = this.audioCtx.createGain;
+    this.gainNode.gain.value = 20;
+
+    // create panner
+    this.pannerOptions = { pan: 0 };
+    this.panner = new StereoPannerNode(this.audioCtx, this.pannerOptions);
+    this.track.connect(this.gainNode).connect(this.panner).connect(this.audioCtx.destination);
   }
 }
 
