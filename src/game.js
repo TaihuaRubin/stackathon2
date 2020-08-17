@@ -46,21 +46,23 @@ class Game {
     // animation stuff here
     this.animationStaus = false;
     // get button
+    var workingButton = document.getElementById("notWorking");
+    workingButton.addEventListener("click", () => {
+      workingButton.disabled = true;
+      console.log("disabled!");
+      this.threeAud();
+    });
+
     var animateButton = document.getElementById("animateButton");
 
     animateButton.addEventListener("click", () => {
       console.log("button Clicked!");
+
       // call animation function to animate the cube
       this.animationStatus = !this.animationStatus;
       this.animateOn();
-      this.soundLoad();
+      // this.soundLoad();
     });
-
-    // const spacialButton = document.getElementById("spacial");
-    // spacialButton.addEventListener("click", () => {
-    //   console.log("spacial!");
-    //   this.Ocil();
-    // });
   }
 
   animationHandler() {
@@ -89,10 +91,24 @@ class Game {
 
   soundLoad() {
     const sound = document.getElementById("audio");
-    if (!this.animationStatus) sound.pause();
+    if (!this.animationStatus) sound.stop();
     else {
+      console.log(sound);
       sound.play();
     }
+  }
+
+  threeAud() {
+    var listener = new THREE.AudioListener();
+    this.camera.add(listener);
+    var sound = new THREE.Audio(listener);
+    var audioLoader = new THREE.AudioLoader();
+    audioLoader.load("assets/2.ogg", (buffer) => {
+      sound.setBuffer(buffer);
+      sound.setLoop(true);
+      sound.setVolume(0.5);
+      sound.play();
+    });
   }
 
   //   webAud() {

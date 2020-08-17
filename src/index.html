@@ -7,7 +7,7 @@
   <body>
     <div id="overlay">
       <button id="animateButton">Animate</button>
-      <button id="spacial">Spacial</button>
+      <button id="notWorking">Not Working</button>
     </div>
 
     <div id="library">
@@ -24,6 +24,43 @@
         window.game = game; //To debug in the browser console
         console.log("DOM loaded!");
       });
+
+      // const workingButton = document.getElementById("notWorking");
+      // var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      // var sine = audioCtx.createOscillator();
+
+      // workingButton.addEventListener("click", () => {
+      //   sine.start();
+      //   sine.connect(audioCtx.destination);
+      //   // var isPanning = false;
+      // });
+
+      var listenerX = 0;
+      var listenerY = 0;
+      window.addEventListener("mouseDown", (e) => {
+        console.log("hello!");
+        listenerX = e.offsetX;
+        listenerY = e.offsetY;
+        // audioCtx.listener.positionX.value = listenerX;
+        // audioCtx.listener.positionY.value = listenerY;
+      });
+      // window.addEventListener("mouseMove", (e)=> {
+      //   if (isPanning){
+      //     panAudio(context, listenerX, listnerY, )
+      //   }
+      // })
+
+      // workingButton.addEventListener("click", () => {
+      //   console.log("Im not working");
+      //   soundOn = !soundOn;
+      //   if (soundOn) {
+      //     sine.start();
+      //     sine.connect(audioCtx.destination);
+      //   } else {
+      //     sine.disconnect(audioCtx.destination);
+      //     sine.stop();
+      //   }
+      //});
     </script>
   </body>
 </html>
