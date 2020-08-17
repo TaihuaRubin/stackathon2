@@ -7,6 +7,30 @@ canvas {
   height: 100%;
 }
 
+#overlay {
+  position: absolute;
+  z-index: 2;
+  top: 80%;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#overlay button {
+  background: #eeb0b0;
+  border: 0;
+  border: 1px solid #315dd4;
+  color: #000000;
+  padding: 16px 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/*
 #animateButton {
   font-family: Monospace;
   background: #89ddf3;
@@ -21,9 +45,10 @@ canvas {
   display: block;
   z-index: 0;
   left: 47%;
-  /* top: 90%; */
+  top: 90%;
   bottom: 15%;
 }
+
 
 #spacial {
   font-family: Monospace;
@@ -39,6 +64,6 @@ canvas {
   display: block;
   z-index: 0;
   left: 20%;
-  /* top: 90%; */
   bottom: 15%;
 }
+*/

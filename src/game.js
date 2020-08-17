@@ -56,11 +56,11 @@ class Game {
       this.soundLoad();
     });
 
-    const spacialButton = document.getElementById("spacial");
-    spacialButton.addEventListener("click", () => {
-      console.log("spacial!");
-      this.webAud();
-    });
+    // const spacialButton = document.getElementById("spacial");
+    // spacialButton.addEventListener("click", () => {
+    //   console.log("spacial!");
+    //   this.Ocil();
+    // });
   }
 
   animationHandler() {
@@ -95,23 +95,27 @@ class Game {
     }
   }
 
-  webAud() {
-    this.AudioContext = window.AudioContext || window.webkitAudioContext;
+  //   webAud() {
+  //     this.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-    this.audioElment = document.querySelector("audio");
+  //     this.audioElment = document.querySelector("#audio");
+  //     if (this.audioElement !== undefined) {
+  //       console.log(this.audioElement);
+  //     }
+  //     this.audioFromJs = new Audio("assets/1.mp3");
+  //     console.log(this.audioFromJs);
+  //     this.audioCtx = new AudioContext();
+  //     this.track = this.audioCtx.createMediaElementSource(this.audioFromJs);
+  //     console.log(this.track);
+  //     // create gain
+  //     this.gainNode = this.audioCtx.createGain;
+  //     // this.gainNode.gain.value = 20;wegb
 
-    this.audioCtx = new AudioContext();
-    this.track = this.audioCtx.createMediaElementSource(this.audioElement);
-
-    // create gain
-    this.gainNode = this.audioCtx.createGain;
-    this.gainNode.gain.value = 20;
-
-    // create panner
-    this.pannerOptions = { pan: 0 };
-    this.panner = new StereoPannerNode(this.audioCtx, this.pannerOptions);
-    this.track.connect(this.gainNode).connect(this.panner).connect(this.audioCtx.destination);
-  }
+  //     // create panner
+  //     this.pannerOptions = { pan: 0 };
+  //     this.panner = new StereoPannerNode(this.audioCtx, this.pannerOptions);
+  //     this.track.connect(this.gainNode).connect(this.panner).connect(this.audioCtx.destination);
+  //   }
 }
 
 //// add orbit controls
