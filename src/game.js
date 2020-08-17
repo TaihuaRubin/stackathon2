@@ -99,7 +99,26 @@ class Game {
   }
 
   threeAud() {
+    var x = 0;
+    var y = 0;
     var listener = new THREE.AudioListener();
+    var drag = false;
+    window.addEventListener("mousedown", (e) => {
+      drag = true;
+    });
+    window.addEventListener("mouseup", (e) => {
+      drag = false;
+    });
+    window.addEventListener("mousemove", (e) => {
+      if (drag) {
+        x += e.offsetX;
+        y += e.offsetY;
+        listener.position.x = x;
+        listener.position.y = y;
+        listener.position.z = x / y;
+      }
+    });
+    console.log("listener", listener);
     this.camera.add(listener);
     var sound = new THREE.Audio(listener);
     var audioLoader = new THREE.AudioLoader();
