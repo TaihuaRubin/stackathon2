@@ -25,43 +25,35 @@ class Game {
       "assets/skybox/dark-s_nz.jpg",
     ]);
     this.scene.background = this.texture;
-
     const geometry = new THREE.BoxGeometry(1, 1, 1); // cube
     const light = new THREE.DirectionalLight(0xffffff); // white light
     light.position.set(0, 20, 10); // light position x, y, z
     const ambient = new THREE.AmbientLight(0x707070); // soft white light
-
     const material = new THREE.MeshPhongMaterial({ color: 0x00aaff, wireframe: true }); // blue, wireframe
-
     this.cube = new THREE.Mesh(geometry, material); // create the cube
-
     this.scene.add(this.cube); // add the cube to scene
     this.scene.add(light); // lights
     this.scene.add(ambient);
-
     this.camera.position.z = 3; //camera 3 away from center pivot in z
-
     this.renderer.render(this.scene, this.camera);
 
     // animation stuff here
     this.animationStaus = false;
+    var animateButton = document.getElementById("animateButton");
+    animateButton.addEventListener("click", () => {
+      console.log("button Clicked!");
+      // call animation function to animate the cube
+      this.animationStatus = !this.animationStatus;
+      this.animateOn();
+      // this.soundLoad();
+    });
+
     // get button
     var workingButton = document.getElementById("notWorking");
     workingButton.addEventListener("click", () => {
       workingButton.disabled = true;
       console.log("disabled!");
       this.threeAud();
-    });
-
-    var animateButton = document.getElementById("animateButton");
-
-    animateButton.addEventListener("click", () => {
-      console.log("button Clicked!");
-
-      // call animation function to animate the cube
-      this.animationStatus = !this.animationStatus;
-      this.animateOn();
-      // this.soundLoad();
     });
   }
 
@@ -76,33 +68,33 @@ class Game {
   animateOn() {
     const game = this;
     if (!this.animationStatus) return;
+
     //window method, updates 60 times a second
     requestAnimationFrame(function () {
       game.animateOn();
     });
 
-    console.log("on");
     // how much rotation to update every time
     this.cube.rotation.x += 0.01;
     this.cube.rotation.y += 0.01;
-
     this.renderer.render(this.scene, this.camera); // make WebGl render the scene and camera
   }
 
-  soundLoad() {
-    const sound = document.getElementById("audio");
-    if (!this.animationStatus) sound.stop();
-    else {
-      console.log(sound);
-      sound.play();
-    }
-  }
+  // soundLoad() {
+  //   const sound = document.getElementById("audio");
+  //   if (!this.animationStatus) sound.stop();
+  //   else {
+  //     console.log(sound);
+  //     sound.play();
+  //   }
+  // }
 
   threeAud() {
     var x = 0;
     var y = 0;
     var listener = new THREE.AudioListener();
     var drag = false;
+
     window.addEventListener("mousedown", (e) => {
       drag = true;
     });
@@ -113,9 +105,9 @@ class Game {
       if (drag) {
         x += e.offsetX;
         y += e.offsetY;
-        listener.position.x = x;
-        listener.position.y = y;
-        listener.position.z = x / y;
+        listener.positionX = x;
+        listener.positionY = y;
+        listener.positionZ = x / y;
       }
     });
     console.log("listener", listener);
@@ -130,27 +122,61 @@ class Game {
     });
   }
 
-  //   webAud() {
-  //     this.AudioContext = window.AudioContext || window.webkitAudioContext;
+  // webAud() {
+  //   this.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-  //     this.audioElment = document.querySelector("#audio");
-  //     if (this.audioElement !== undefined) {
-  //       console.log(this.audioElement);
-  //     }
-  //     this.audioFromJs = new Audio("assets/1.mp3");
-  //     console.log(this.audioFromJs);
-  //     this.audioCtx = new AudioContext();
-  //     this.track = this.audioCtx.createMediaElementSource(this.audioFromJs);
-  //     console.log(this.track);
-  //     // create gain
-  //     this.gainNode = this.audioCtx.createGain;
-  //     // this.gainNode.gain.value = 20;wegb
-
-  //     // create panner
-  //     this.pannerOptions = { pan: 0 };
-  //     this.panner = new StereoPannerNode(this.audioCtx, this.pannerOptions);
-  //     this.track.connect(this.gainNode).connect(this.panner).connect(this.audioCtx.destination);
+  //   this.audioElment = document.querySelector("#audio");
+  //   if (this.audioElement !== undefined) {
+  //     console.log(this.audioElement);
   //   }
+  //   this.audioFromJs = new Audio("assets/1.mp3");
+  //   console.log(this.audioFromJs);
+  //   this.audioCtx = new AudioContext();
+  //   this.track = this.audioCtx.createMediaElementSource(this.audioFromJs);
+  //   console.log(this.track);
+  //   // create gain
+  //   this.gainNode = this.audioCtx.createGain;
+  //   // this.gainNode.gain.value = 20;wegb
+
+  //   // create panner
+  //   this.pannerOptions = { pan: 0 };
+  //   this.panner = new StereoPannerNode(this.audioCtx, this.pannerOptions);
+  //   this.track.connect(this.gainNode).connect(this.panner).connect(this.audioCtx.destination);
+  // }
+
+  // panner() {
+  //   let audioCtx;
+  //   const audioFile = document.querySelector("audio");
+  //   if (!audioCtx) {
+  //     audioCtx = new window.AudioContext();
+  //   }
+  //   let source = audioCtx.createMediaElementSource(audioFile);
+  //   let panNode = audioCtx.createStereoPanner();
+
+  //   // controls
+  //   let x = 0;
+  //   let y = 0;
+  //   var drag = false;
+  //   window.addEventListener("mousedown", (e) => {
+  //     drag = true;
+  //   });
+  //   window.addEventListener("mouseup", (e) => {
+  //     drag = false;
+  //   });
+  //   window.addEventListener("mousemove", (e) => {
+  //     if (drag) {
+  //       x += e.offsetX;
+  //       y += e.offsetY;
+  //     }
+  //   });
+
+  //   function updatePanNode() {
+  //     panNode.pan.value += Math.round(x / y / 10000);
+  //   }
+
+  //   source.connect(panNode);
+  //   panNode.connect(audioCtx.destination);
+  // }
 }
 
 //// add orbit controls
