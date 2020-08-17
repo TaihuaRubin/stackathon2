@@ -15,18 +15,24 @@ canvas {
   width: 20%;
   height: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: right;
   background: rgba(149, 143, 143, 0.219);
 }
 
 #overlay button {
+  float: none;
+  display: block;
   background: #eeb0b0;
   border: 0;
   border: 1px solid #315dd4;
   color: #000000;
   margin: 15px;
-  padding: 16px 20px;
+  width: 100px;
+  height: 50px;
+  max-width: 100%;
+  /* padding: 16px 20px; */
   text-transform: uppercase;
   cursor: pointer;
 }
